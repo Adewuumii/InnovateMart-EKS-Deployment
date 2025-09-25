@@ -74,6 +74,6 @@ jobs:
       - name: Deploy the applications using Kubectl
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         run: |
-          kubectl apply -f kubernetes.yaml
+          kubectl apply -f https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/kubernetes.yaml
           kubectl get pods
           echo "Applications are deployed successfully........"

@@ -51,7 +51,7 @@ jobs:
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         run: |
           echo "Waiting for the EKS Cluster to be ready.........."
-          aws eks wait cluster-active --name innovatemart-eks-cluster --region ${{ env.AWS_REGION}}
+          aws eks wait cluster-active --name innovatemart --region ${{ env.AWS_REGION}}
           echo "EKS Cluster is now ready."
 
       - name: Install Kubectl
@@ -66,7 +66,7 @@ jobs:
       - name: Update kubeconfig
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         run: |
-          aws eks update-kubeconfig --name innovatemart-eks-cluster --region ${{ env.AWS_REGION}}
+          aws eks update-kubeconfig --name innovatemart --region ${{ env.AWS_REGION}}
           sleep 60
           kubectl get nodes
           echo "Kubernetes access is configured........"
